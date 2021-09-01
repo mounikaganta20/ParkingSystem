@@ -1,6 +1,8 @@
 package parkinglot;
 
+import java.util.HashMap;
 import java.util.Scanner;
+
 
 public class CarTest {
 	
@@ -8,7 +10,9 @@ public class CarTest {
 	public static void main(String[] args){  
 
 		Scanner input = new Scanner(System.in);
-		
+		HashMap<Integer, Car> cars = new HashMap<Integer, Car>();
+		ParkingLot cp  = new ParkingLot();
+
 		System.out.println("Parking area");
 		while(true)
 		{
@@ -21,10 +25,8 @@ public class CarTest {
 		System.out.println("5: Exit Car");
 		System.out.println("6: Exit");
         int c = input.nextInt();
-        CarTest ticketingSystem = new CarTest();
-
-    	int slot1 = ticketingSystem.parkACar(new Car("KA-01-HH-1234", "White"));
-        
+       
+       
         if(c==1)
 		{
         	System.out.println("Enter car Reg No :");
@@ -32,12 +34,13 @@ public class CarTest {
         	System.out.println("Enter car Color :");
         	String color=input.next();
         	
-        	      	
-        	int no = 1;
-			if(no==0)
+        	
+         	int slotinfo = cp.parkCar(color,rgno);    	
+        	
+			if(slotinfo==0)
         		System.out.println("No slots available please come again later");
         	else
-        		System.out.println("Your car is parked at "+no+" slot.");
+        		System.out.println("Your car is parked at "+slotinfo+" slot.");
         			
 		}
         else if(c==2)
@@ -47,6 +50,7 @@ public class CarTest {
         }
         else if(c==4)
         {
+        	cp.showDetails();
         	System.out.println("Showing all cars in parking");
         	
         	
@@ -55,11 +59,8 @@ public class CarTest {
         {
         	System.out.println("Return Slot num to exit from parking");
          	String slot=input.next();
+         	cp.unParking(slot);  
            
-			// 
-         
-          	//controller.unParking(slot);
-        	//System.exit(1);
         } 
         else if(c==6)
         {
@@ -76,11 +77,6 @@ public class CarTest {
 		
         
 	    }
-
-	private int parkACar(Car car) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	
 
