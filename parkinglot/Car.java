@@ -17,7 +17,6 @@ public class Car {
   {
   	carColor=color;
   	registrationNum=regno;
-  	
   }
   public String getColor() {
 		return this.carColor;
@@ -25,11 +24,12 @@ public class Car {
 	
   public String getRegistrationNumber() {
 		return this.registrationNum;
-}
+   }
   
   public int getSlotNumber() {
 	   	 return this.slotNum;
 	    }
+  
 	 public void setSlotNumber(int slotNum) {
 	   	 this.slotNum = slotNum;
 	    }
