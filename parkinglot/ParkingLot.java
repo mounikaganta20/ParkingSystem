@@ -31,9 +31,8 @@ public class ParkingLot {
 		 System.out.println("Cars Parked in ParkingLot "+cars.size() );
 		   int next=0;
 		   for(int i=1;i<=totalNumberofSlots;i++ )
-		   {	
-			  
-			   if(cars.get(i) == null)
+		   {
+			   if(!cars.containsKey(i))
 			   {
 			   System.out.println("Avilable slot is "+i);
 			   return i;		   
