@@ -10,7 +10,13 @@ public class ParkingLot {
 	Map<Integer,Car> cars=new HashMap<Integer,Car>();
 	Integer totalNumberofSlots=5;
 	
+	public ParkingLot(int totalNumberofSlots) {
+		   this.totalNumberofSlots = totalNumberofSlots;
+	   }
 	
+	public Integer getTotalNumberOfSlots() {
+		return totalNumberofSlots;
+	}
 	public int parkCar(String color,String regNo)
 	   {
 		   int slotno=getNextSlot();
@@ -22,7 +28,7 @@ public class ParkingLot {
 	   
 	 public int getNextSlot()
 	   {	 
-		 System.out.println("Avilable cars in parking "+cars.size() );
+		 System.out.println("Cars Parked in ParkingLot "+cars.size() );
 		   int next=0;
 		   for(int i=1;i<=totalNumberofSlots;i++ )
 		   {	
@@ -39,7 +45,7 @@ public class ParkingLot {
 	 
 	 public void showDetails() {
 	     if((cars.size())== 0) {
-	         System.out.println("\n *********  slots are empty ********* \n");
+	         System.out.println("\n ********* No cars is parked in the Parking Slot ********* \n");
 	         return;
 	     }
 	     for (Map.Entry<Integer,Car> entry : cars.entrySet()) {
@@ -50,15 +56,50 @@ public class ParkingLot {
 	 }
 	 
 	
-	public Map<Integer, Car> unParking(String slot) 
-	 {
-	   String info = slot;
-	   int slotinfo=Integer.parseInt(info);  
-	  cars.remove(slotinfo);
-	  System.out.println("Slot removed "+info);
-	  return cars;
-	 		 
+	public Map<Integer, Car> unParking(int slot) 
+	 {  
+	  cars.remove(slot);
+	  System.out.println("Slot removed "+slot);
+	  return cars; 		 
 	  }
+	public  void searchCarRegistrationNo(String regno) {
+		 if(cars.size()==0) {
+			 System.out.println("\n No Cars in parking lot \n");
+		 }else {
+			 boolean status = false;
+		      for (Map.Entry<Integer, Car> entry : cars.entrySet()) {
+		          if(entry.getValue().getRegistrationNumber().equalsIgnoreCase(regno)) {
+		              System.out.println("slot number:" + entry.getValue().getSlotNumber());
+		              status = true;
+		              break;
+		          }
+		      }
+		      if(!status) {
+		          System.out.println("\n Given RegNo Car is Not Present in Parking Lot \n");
+		      }
+		 }
+		 
+		
+	 }
+	 public void searchCarColor(String color) {
+		 if(cars.size()==0) {
+			 System.out.println("\n No Cars in parking lot \n");
+		 }else {
+			 boolean status = false;
+		      for (Map.Entry<Integer, Car> entry : cars.entrySet()) {
+		          if(entry.getValue().getColor().equalsIgnoreCase(color)) {
+		              System.out.println("slot number: " + entry.getValue().getSlotNumber());
+		              System.out.println("Reg number: " + entry.getValue().getRegistrationNumber());
+		              status = true;
+		             
+		          }
+		      }
+		      if(!status) {
+		          System.out.println("\n Given Colour Car is Not Present in Parking Lot \n");
+		      }
+		 }
+	 }
 
+	
 
 }

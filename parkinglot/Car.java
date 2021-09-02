@@ -1,27 +1,20 @@
 package parkinglot;
 
 public class Car {
-
-	
-	//private String carColor;
-
-//  public Car (String carNumber,String carColor)
-//  {
-//	  if(carNumber == null || carColor == null) {
-//			throw new IllegalArgumentException("Both registrationNumber & Color should not be null");
-//		}
-//		this.carNumber = carNumber;
-//		this.carColor = carColor;
-//	}
-// 
   
   int slotNum=0;
-	String carColor;
+  String carColor;
   String registrationNum;
   
   public Car(int slot,String color,String regno)
   {
   	slotNum=slot;
+  	carColor=color;
+  	registrationNum=regno;
+  	
+  }
+  public Car(String color,String regno)
+  {
   	carColor=color;
   	registrationNum=regno;
   	
@@ -35,7 +28,7 @@ public class Car {
 }
   
   public int getSlotNumber() {
-	   	 return slotNum;
+	   	 return this.slotNum;
 	    }
 	 public void setSlotNumber(int slotNum) {
 	   	 this.slotNum = slotNum;

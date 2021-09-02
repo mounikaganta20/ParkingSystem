@@ -11,9 +11,9 @@ public class CarTest {
 
 		Scanner input = new Scanner(System.in);
 		HashMap<Integer, Car> cars = new HashMap<Integer, Car>();
-		ParkingLot cp  = new ParkingLot();
+		ParkingLot cp  = new ParkingLot(3);
 
-		System.out.println("Parking area");
+		System.out.println("Parking Space");
 		while(true)
 		{
 		
@@ -44,21 +44,32 @@ public class CarTest {
         			
 		}
         else if(c==2)
-        {
+        {  
+        	String regNo=input.next();
+        	cp.searchCarRegistrationNo(regNo);
         	System.out.println("searching by reg no");
+        	
+        }
+        else if(c==3)
+        {
+        	String color=input.next();
+        	cp.searchCarColor(color);
+        	System.out.println("searching by color");
+        	
         	
         }
         else if(c==4)
         {
-        	cp.showDetails();
         	System.out.println("Showing all cars in parking");
+        	cp.showDetails();
+        	
         	
         	
         }
         else if(c==5)
         {
-        	System.out.println("Return Slot num to exit from parking");
-         	String slot=input.next();
+        	System.out.println("Return Slot No to exit from parking");
+         	int slot=input.nextInt();
          	cp.unParking(slot);  
            
         } 
